@@ -1,0 +1,31 @@
+﻿@using System.Web.Optimization
+@model Search
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<html>
+    <head>
+    
+        <title>Search Sample</title>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryui")
+        @Scripts.Render("~/bundles/jqueryval")
+
+        @Styles.Render("~/Content/css")
+    </head>
+    <body>
+        <img alt="" src="http://ep.yimg.com/ay/mustangtuning/smoked-led-tail-lights-87-93-all-7.jpg" />
+        
+        @*The form must submit to the controller asynchronously ( feel free to use jQuery's ajax function for this as it will save you time )*@
+        @using (Ajax.BeginForm(new AjaxOptions {InsertionMode = InsertionMode.Replace, UpdateTargetId = "FormContents"}))
+        {
+            <h2>Search Sample</h2>
+            <div id="FormContents">
+
+                @{ Html.RenderPartial("SearchForm", Model); }
+            </div>
+        }
+    </body>
+</html>

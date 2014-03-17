@@ -1,0 +1,62 @@
+﻿@model Search
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@*The page must contain a form with text box for the user to search, and a button to submit*@
+@Html.TextBoxFor(x => x.Term)
+@if (Model != null)
+{
+}
+@*The page must allow for sorting the results. Valid sort options and values are below: [refers to API parameter (sort_by_field)]*@@Html.DropDownListFor(n => n.Sort, new SelectList(
+                                                                                                                                       new List<Object>
+                                                                                                                                       {
+                                                                                                                                           new {value = "Price:ASC", text = "Price:ASC"},
+                                                                                                                                           new {value = "Price:DESC", text = "Price:DESC"},
+                                                                                                                                           new {value = "Name:ASC", text = "Name:ASC"},
+                                                                                                                                           new {value = "Name:DESC", text = "Name:DESC"}
+                                                                                                                                       },
+                                                                                                                                       "value",
+                                                                                                                                       "text",
+                                                                                                                                       "Price:ASC"
+                                                                                                                                       ))
+<input id="SearchButton" type="submit" value="submit" />
+<div>@Html.ValidationMessageFor(x => x.Term)</div>
+@*@if (!string.IsNullOrEmpty(ViewBag.Error))
+{
+    <div>@ViewBag.Error.ToString()</div> 
+}*@
+@if (Model != null)
+{
+    <div class ="container">
+        <div class ="col leftAligned noborder">Total results: @Model.Results.pagination.total_products </div>
+        <div class ="col rightAligned noborder"> Page: @Model.Results.pagination.current_page of @Model.Results.pagination.total_pages</div>
+
+    </div>
+
+    <div class="container">      
+        <div class="heading">
+            @*The page must display the search results in a user-friendly way ( "Name", "SKU", "Price", "Manufacturer", and "Description" are required )*@
+            <div class="col leftAligned">Name</div>
+            <div class="col leftAligned">Sku</div>
+            <div class="col leftAligned">Price</div>
+            <div class="col leftAligned">Description</div>
+            <div class="col leftAligned">Manufacturer</div>
+        </div>
+        @foreach (xmlResult result in Model.Results.results)
+        {
+            <div class="table-row">
+                <div class="col leftAligned">@result.Name</div>
+                <div class="col leftAligned">@result.Sku</div>
+                <div class="col leftAligned">@String.Format("{0:C}", decimal.Parse(result.Price))</div>
+                <div class="col leftAligned">@HttpUtility.HtmlDecode(result.Description)</div>
+                <div class="col leftAligned">@result.Manufacturer</div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <div>Please Enter your search terms</div>
+}

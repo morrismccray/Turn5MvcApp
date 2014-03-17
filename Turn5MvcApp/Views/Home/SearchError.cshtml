@@ -1,0 +1,26 @@
+﻿@model Search
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@*The page must contain a form with text box for the user to search, and a button to submit*@
+@Html.TextBoxFor(x => x.Term)
+@if (Model != null)
+{
+}
+@Html.DropDownListFor(n => n.Sort, new SelectList(
+    new List<Object>
+    {
+        new {value = "Price:ASC", text = "Price:ASC"},
+        new {value = "Price:DESC", text = "Price:DESC"},
+        new {value = "Name:ASC", text = "Name:ASC"},
+        new {value = "Name:DESC", text = "Name:DESC"}
+    },
+    "value",
+    "text",
+    "Price:ASC"
+    ))
+<input id="SearchButton" type="submit" value="submit" />
+<div>@Html.ValidationMessageFor(x => x.Term)</div>
+<div>You have encountered an error, please try again to enter your search terms</div>
