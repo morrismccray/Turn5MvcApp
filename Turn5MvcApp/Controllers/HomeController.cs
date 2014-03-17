@@ -79,10 +79,10 @@ namespace Turn5MvcApp.Controllers
         //Must handle parsing the XML response returned by the client 
         private static SearchXML ParseResponse(WebResponse response)
         {
-            Encoding encode = Encoding.GetEncoding("utf-8");
+            var encode = Encoding.GetEncoding("utf-8");
 
-            using (Stream dataStream = response.GetResponseStream())
-            {
+            using (var dataStream = response.GetResponseStream())
+            
                 using (var reader = new StreamReader(dataStream, encode))
                 {
                     var serializer = new XmlSerializer(typeof (SearchXML));
@@ -90,20 +90,21 @@ namespace Turn5MvcApp.Controllers
                     var results = ((SearchXML) serializer.Deserialize(reader));
                     return results;
                 }
-            }
+            
         }
 
         //Must handle parsing the XML response returned by the client 
         private static string GetResultNames(Search searchModel)
         {
-            string resultNames = string.Empty;
-            for (int index = 0; index < searchModel.Results.results.Length && index < 10; index++)
+            var resultNames = string.Empty;
+            for (var index = 0; index < searchModel.Results.results.Length && index < 10; index++)
             {
-                xmlResult result = searchModel.Results.results[index];
+                var result = searchModel.Results.results[index];
                 resultNames = resultNames + result.Name + " | ";
             }
-
-            return resultNames.Remove(resultNames.Length - 3, 3);
+            if( resultNames.Length != 0)
+            resultNames = resultNames.Remove(resultNames.Length - 3, 3);
+            return resultNames;
         }
     }
 }

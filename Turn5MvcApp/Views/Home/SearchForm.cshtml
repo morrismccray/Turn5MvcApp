@@ -9,18 +9,19 @@
 @if (Model != null)
 {
 }
-@*The page must allow for sorting the results. Valid sort options and values are below: [refers to API parameter (sort_by_field)]*@@Html.DropDownListFor(n => n.Sort, new SelectList(
-                                                                                                                                       new List<Object>
-                                                                                                                                       {
-                                                                                                                                           new {value = "Price:ASC", text = "Price:ASC"},
-                                                                                                                                           new {value = "Price:DESC", text = "Price:DESC"},
-                                                                                                                                           new {value = "Name:ASC", text = "Name:ASC"},
-                                                                                                                                           new {value = "Name:DESC", text = "Name:DESC"}
-                                                                                                                                       },
-                                                                                                                                       "value",
-                                                                                                                                       "text",
-                                                                                                                                       "Price:ASC"
-                                                                                                                                       ))
+@*The page must allow for sorting the results. Valid sort options and values are below: [refers to API parameter (sort_by_field)]*@
+@Html.DropDownListFor(n => n.Sort, new SelectList(
+                                                new List<Object>
+                                                {
+                                                    new {value = "Price:ASC", text = "Price:ASC"},
+                                                    new {value = "Price:DESC", text = "Price:DESC"},
+                                                    new {value = "Name:ASC", text = "Name:ASC"},
+                                                    new {value = "Name:DESC", text = "Name:DESC"}
+                                                },
+                                                "value",
+                                                "text",
+                                                "Price:ASC"
+                                                ))
 <input id="SearchButton" type="submit" value="submit" />
 <div>@Html.ValidationMessageFor(x => x.Term)</div>
 @*@if (!string.IsNullOrEmpty(ViewBag.Error))
