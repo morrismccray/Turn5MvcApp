@@ -78,13 +78,13 @@
 <h3>
 <a name="search-api" class="anchor" href="#search-api"><span class="octicon octicon-link"></span></a>Search API:</h3>
 
-<p>URL:            <a href="http://api.americanmuscle.com/search/get">http://api.americanmuscle.com/search/get</a>
+<pre><code>URL:        http://api.americanmuscle.com/search/get
 Method:     GET
-Parameters:<br>
+Parameters:     
             (string) keywords  (required, minimum length 3)
             (int) page (optional, defaults to 1 if not passed)
-            (string) sort_by_field (optional, ENUM( 'Price:ASC', 'Price:DESC', 'Name:ASC', 'Name:DESC' ), defaults to empty if not passed )
-...             </p>
+            (string) sort_by_field (optional, ENUM( 'Price:ASC', 'Price:DESC', 'Name:ASC',        'Name:DESC' ), defaults to empty if not passed )              
+</code></pre>
 
 <p>Sample request: <a href="http://api.americanmuscle.com/search/get?keywords=catback+exhaust&amp;sort_by_field=Price:ASC">http://api.americanmuscle.com/search/get?keywords=catback+exhaust&amp;sort_by_field=Price:ASC</a>
 [Sample keywords: catback+exhaust,tuner,keychain  (pretty much anything on our website will work here)]</p>
