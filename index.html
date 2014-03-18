@@ -13,13 +13,13 @@
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <title>Turn5mvcapp by morrismccray</title>
+    <title>Build a simple search page using ASP.NET MVC 4 (C#) by morrismccray</title>
   </head>
 
   <body>
     <header>
       <div class="inner">
-        <h1>Turn5mvcapp</h1>
+        <h1>Build a simple search page using ASP.NET MVC 4 (C#)</h1>
         <h2>Build a simple search page using ASP.NET MVC 4 (C#). What you build is entirely up to you, however, the application should contain a model, controller, and view and meet the requirements. You may spend as much time as you feel comfortable spending within the allotted time constraints.</h2>
         <a href="https://github.com/morrismccray/Turn5MvcApp" class="button"><small>View project on</small>GitHub</a>
       </div>
@@ -28,37 +28,86 @@
     <div id="content-wrapper">
       <div class="inner clearfix">
         <section id="main-content">
-          <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
-
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+          <h1>
+<a name="turn5mvcapp" class="anchor" href="#turn5mvcapp"><span class="octicon octicon-link"></span></a>Turn5MvcApp</h1>
 
 <h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<a name="toolbox" class="anchor" href="#toolbox"><span class="octicon octicon-link"></span></a>TOOLBOX:</h3>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p>During this exercise, please use the following:</p>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<p>• ASP.NET MVC 4 
+• jQuery (Feel free to use the Google CDN by including this tag in your markup )
+• Git (create an account on github.com, or use existing)</p>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<p>You may submit your code by referencing your github repository.</p>
 
 <h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>REQUIREMENTS:</h3>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<h3>
+<a name="frontend" class="anchor" href="#frontend"><span class="octicon octicon-link"></span></a>Frontend:</h3>
+
+<p>• Markup must be valid, semantic HTML5
+• The page must contain a form with text box for the user to search, and a button to submit
+• The form must contain simple javascript validation to ensure the text box is not empty and contains at least 3 characters 
+• The form must submit to the controller asynchronously ( feel free to use jQuery's ajax function for this as it will save you time )
+• Errors must be handled and a friendly message displayed to the user should one be encountered
+• The page must display the search results in a user-friendly way ( "Name", "SKU", "Price", "Manufacturer", and "Description" are required )
+• The page must allow for sorting the results. Valid sort options and values are below: [refers to API parameter (sort_by_field)]
+            Option                      Value
+            Name Ascending              Name:ASC
+            Name Descending             Name:DESC
+            Price Ascending             Price:ASC
+            Price Descending                Price:DESC
+            Relevance (default, no value)
+• Use CSS to style the page. It doesn't need to win any beauty pageants, but shouldn't be a plain white page either. Simple styling is fine here. It’s your search page, do whatever you’d like.</p>
+
+<h3>
+<a name="backend" class="anchor" href="#backend"><span class="octicon octicon-link"></span></a>Backend:</h3>
+
+<p>• Must handle the request to render the view
+• Must handle the call to the search client (see API notes on page 3)
+• Must handle parsing the XML response returned by the client 
+• Must store the following in a database:
+1.  Session id ( some unique string, doesn't actually have to be a real session id )
+2.  Keywords searched ( the terms the user searched for )
+3.  The "Name"s of the first 10 results returned from the search client
+• Note: We don't expect you to create the database, just hook it up as you would normally, but leave connection string blank. Use whatever table structure you feel makes the most sense.</p>
+
+<h3>
+<a name="search-api" class="anchor" href="#search-api"><span class="octicon octicon-link"></span></a>Search API:</h3>
+
+<p>URL:            <a href="http://api.americanmuscle.com/search/get">http://api.americanmuscle.com/search/get</a>
+Method:     GET
+Parameters:<br>
+            (string) keywords  (required, minimum length 3)
+            (int) page (optional, defaults to 1 if not passed)
+            (string) sort_by_field (optional, ENUM( 'Price:ASC', 'Price:DESC', 'Name:ASC', 'Name:DESC' ), defaults to empty if not passed )
+...             </p>
+
+<p>Sample request: <a href="http://api.americanmuscle.com/search/get?keywords=catback+exhaust&amp;sort_by_field=Price:ASC">http://api.americanmuscle.com/search/get?keywords=catback+exhaust&amp;sort_by_field=Price:ASC</a>
+[Sample keywords: catback+exhaust,tuner,keychain  (pretty much anything on our website will work here)]</p>
+
+<h3>
+<a name="response-------xml-textxml" class="anchor" href="#response-------xml-textxml"><span class="octicon octicon-link"></span></a>Response:       XML (text/xml)</h3>
+
+<p>Error Codes:<br>
+• 400     occurs due to a bad request (invalid parameters, etc)
+• 500     occurs due to a fatal server error </p>
+
+<p>The response returns a bunch of stuff that you will not use. The important stuff is outlined below:</p>
+
+<p>Total results:      xml-&gt;pagination-&gt;total_products
+Items per page: 25 (this is hardcoded, so you'll always get &lt;= 25 results )
+Current page:       xml-&gt;pagination-&gt;current_page (page parameter if passed)
+Total pages:        xml-&gt;pagination-&gt;total_pages
+Results:        xml-&gt;results
+Name:           xml-&gt;results-&gt;result-&gt;Name
+SKU:            xml-&gt;results-&gt;result-&gt;Sku
+Price:          xml-&gt;results-&gt;result-&gt;Price
+Manufacturer:       xml-&gt;results-&gt;result-&gt;Manufacturer
+Description:        xml-&gt;results-&gt;result-&gt;Description</p>
         </section>
 
         <aside id="sidebar">
